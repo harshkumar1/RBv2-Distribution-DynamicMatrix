@@ -22,6 +22,9 @@ pipelines:
     
       - name: setting_env_variable
         type: Bash
+        configuration:
+          inputResources:
+            - name: src_repo_rbv2_distribution_dynamic_matrix
         execution:
           onExecute:
             - add_run_variables servers_array="server-z,server-y,server-x"

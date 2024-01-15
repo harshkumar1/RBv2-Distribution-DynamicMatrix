@@ -10,8 +10,7 @@ pipelines:
             allowCustom: true
             allowMultipleValues: true
     steps:
-    
-      - name: dynamic_matrix
+      - name: dynamic_matrix_env_ui
         type: Matrix
         stepMode: Bash
         stepletMultipliers:
@@ -20,3 +19,22 @@ pipelines:
         execution:
           onExecute:
             - echo ${multiValue_env}
+    
+      - name: setting_env_variable
+        type: Bash
+        execution:
+          onExecute:
+            - add_run_variables servers_array="server-z,server-y,server-x"
+
+      - name: dynamic_matrix_env_step
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          inputSteps:
+            - name: setting_env_variable
+        stepletMultipliers:
+          environmentVariables:
+            - multiValue_env: ${servers_array} #picking up value from environment variable
+        execution:
+          onExecute:
+            - echo ${servers_array}

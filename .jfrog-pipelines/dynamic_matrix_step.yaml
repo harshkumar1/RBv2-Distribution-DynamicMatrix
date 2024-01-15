@@ -12,6 +12,9 @@ pipelines:
     steps:
       - name: dynamic_matrix_env_ui
         type: Matrix
+        configuration:
+          inputSteps:
+            - name: setting_env_variable
         stepMode: Bash
         stepletMultipliers:
           environmentVariables:
@@ -22,9 +25,6 @@ pipelines:
     
       - name: setting_env_variable
         type: Bash
-        configuration:
-          inputResources:
-            - name: src_repo_rbv2_distribution_dynamic_matrix
         execution:
           onExecute:
             - add_run_variables servers_array="server-z,server-y,server-x"

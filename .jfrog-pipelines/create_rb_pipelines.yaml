@@ -11,7 +11,7 @@ resources:
         commit: true
 
 pipelines:
-  - name: release_management
+  - name: create_rb_pipeline
     configuration:
       jfrogCliVersion: 2
     steps:

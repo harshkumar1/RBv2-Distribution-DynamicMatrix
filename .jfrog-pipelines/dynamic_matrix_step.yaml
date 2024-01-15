@@ -14,9 +14,6 @@ pipelines:
       - name: dynamic_matrix
         type: Matrix
         stepMode: Bash
-        configuration:
-          inputSteps:
-            - name: step_1
         stepletMultipliers:
           environmentVariables:
             - multiValue_env: ${multivalue_env_variable} #picking up value from environment variable

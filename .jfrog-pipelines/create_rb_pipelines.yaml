@@ -9,9 +9,9 @@ resources:
       cloneProtocol: https
       buildOn:
         commit: true
-
+# TODO: Listen for artifct to a repo and automatically create a RB
 pipelines:
-  - name: create_rb_pipeline
+  - name: create_rb_pipeline_demo
     configuration:
       jfrogCliVersion: 2
     steps:

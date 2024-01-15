@@ -1,5 +1,5 @@
 pipelines:
-  - name: pipeline_1
+  - name: dynamic_matrix_step
     configuration:
       environmentVariables:
         readOnly:

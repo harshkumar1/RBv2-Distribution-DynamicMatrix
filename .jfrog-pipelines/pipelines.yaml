@@ -1,3 +1,15 @@
+resources:
+  - name: src_repo_rbv2_distribution_dynamic matrix
+    type: GitRepo
+    configuration:
+      path: harshkumar1/RBv2-Distribution-DynamicMatrix
+      gitProvider: hk_github
+      branches:
+        include: ^main$
+      cloneProtocol: https
+      buildOn:
+        commit: true
+
 pipelines:
   - name: release_management
     configuration:
@@ -7,9 +19,9 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: {{ .Values.primaryResource }}
+            - name: src_repo_rbv2_distribution_dynamic matrix
           integrations:
-            - name: {{ .Values.artifactory }}
+            - name: hk_artifactory
             - name: signing_int_rb
             - name: jpdPlatform
         execution:

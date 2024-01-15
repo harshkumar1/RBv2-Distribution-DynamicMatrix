@@ -14,7 +14,7 @@ pipelines:
         type: PreMatrix
         execution:
           onExecute:
-            - add_run_variables servers_array="'a,b,c'"
+            - add_run_variables servers_array='a,b,c'
     
       - name: step_3
         type: Matrix

@@ -22,7 +22,6 @@ pipelines:
             - name: src_repo_rbv2_distribution_dynamic matrix
           integrations:
             - name: hk_artifactory
-            - name: signing_int_rb
             - name: jpdPlatform
         execution:
           onExecute:
@@ -34,7 +33,6 @@ pipelines:
                 version: 1.0.1
                 sourceArtifactPaths:
                   - "path": "demo-docker-local/demo_microservice_1/10/manifest.json"
-                signing: signing_int_rb
           onFailure:
             - echo "Task Test failed"
           onSuccess:

@@ -33,6 +33,7 @@ pipelines:
                 version: 1.0.1
                 sourceArtifactPaths:
                   - "path": "demo-docker-local/demo_microservice_1/10/manifest.json"
+                signing: hk_rb_signing_key
           onFailure:
             - echo "Task Test failed"
           onSuccess:

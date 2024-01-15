@@ -23,6 +23,7 @@ pipelines:
           integrations:
             - name: hk_artifactory
             - name: jpdPlatform
+            - name: hk_rb_signing_key
         execution:
           onExecute:
             - task: jfrog/release-bundle@v1.0.0

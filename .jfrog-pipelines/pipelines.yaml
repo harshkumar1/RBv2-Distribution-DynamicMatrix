@@ -1,5 +1,5 @@
 resources:
-  - name: src_repo_rbv2_distribution_dynamic matrix
+  - name: src_repo_rb_distribution_dynamic matrix
     type: GitRepo
     configuration:
       path: harshkumar1/RBv2-Distribution-DynamicMatrix
@@ -19,7 +19,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: src_repo_rbv2_distribution_dynamic matrix
+            - name: src_repo_rb_distribution_dynamic matrix
           integrations:
             - name: hk_artifactory
             - name: jpdPlatform

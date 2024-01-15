@@ -1,0 +1,31 @@
+pipelines:
+  - name: pipeline_1
+    configuration:
+      environmentVariables:
+        readOnly:
+          multivalue_env_variable:
+            defaultMultipleValues: ["random_1"]
+            description: "testing"
+            values: ["random_1", "random_2", "random_3", "random_4"]
+            allowCustom: true
+            allowMultipleValues: true
+    steps:
+      - name: step_1
+        type: PreMatrix
+        execution:
+          onExecute:
+            - add_run_variables servers_array="a,b,c"
+    
+      - name: step_3
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          inputSteps:
+            - name: step_1
+        stepletMultipliers:
+          environmentVariables:
+            - multiValue_env: ${multivalue_env_variable} #picking up value from environment variable
+            - module: ${servers_array} #picking up value from shell variable passed by add_run_variable function
+        execution:
+          onExecute:
+            - echo ${module} and multiValue_env ${multiValue_env}

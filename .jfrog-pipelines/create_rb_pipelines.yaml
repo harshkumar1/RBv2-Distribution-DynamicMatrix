@@ -11,7 +11,7 @@ resources:
         commit: true
 # TODO: Listen for artifct to a repo and automatically create a RB
 pipelines:
-  - name: create_rb_pipeline_demo
+  - name: demo_create_rb_pipeline
     configuration:
       jfrogCliVersion: 2
     steps:

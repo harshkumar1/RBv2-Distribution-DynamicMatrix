@@ -1,0 +1,31 @@
+pipelines:
+  - name: release_management
+    configuration:
+      jfrogCliVersion: 2
+    steps:
+      - name: create_rbv2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: {{ .Values.primaryResource }}
+          integrations:
+            - name: {{ .Values.artifactory }}
+            - name: signing_int_rb
+            - name: jpdPlatform
+        execution:
+          onExecute:
+            - task: jfrog/release-bundle@v0.0.1
+              id: create-release-bundle
+              input:
+                jfrogPlatformToken: jpdPlatform
+                name: release_bundle_cpp
+                version: 1.0.1
+                sourceArtifactPaths:
+                  - "path": "demo-docker-local/demo_microservice_1/10/manifest.json"
+                signing: signing_int_rb
+          onFailure:
+            - echo "Task Test failed"
+          onSuccess:
+            - echo "Test Task execution is a success without any errors"
+          onComplete:
+            - echo "Test Task execution completed.
